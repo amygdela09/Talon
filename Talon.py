@@ -5,35 +5,29 @@ from bs4 import BeautifulSoup
 
 def getLinks(linkUrl):
 	r = requests.get(linkUrl)
-	soup = BeautifulSoup(r.content, "html.parser")
-	for links in soup.find_all("a"):
+	soupLinks = BeautifulSoup(r.content, "html.parser")
+	for links in soupLinks.find_all("a"):
 		hrefs = links.get("href")
+		print()
 		print(hrefs)
 		linkFile = open("links.txt", "a")
 		linkFile.write("\n" + hrefs)
-	print("")
-	print("Answer is case sensitive. (Use Lower Case.)")
-	saveOrNah = input("Save Links? y/n: ")
-	if saveOrNah == "y":
-		linkFile.close()
-		print("Saved.")
-		os.system("pause")
-	else:
-		linkFile.close()
-		os.remove("links.txt")
-		print("Not Saved.")
-		os.system("pause")
+	linkFile.close()
+	print()
+	print("Done.")
+	os.system("pause")
+	print()
 
 def getSource(sourceUrl):
 	s = requests.get(sourceUrl)
-	print(s.content)
-	os.system("pause")
 	file = wget.download(sourceUrl)
 	os.rename(file, "source.html")
 	file = "source.html"
-	print("")
+	print()
+	print("Done.")
 	print("Saved as " + file)
 	os.system("pause")
+	print()
 
 def getImages(imageUrl):
 	imgUrl = requests.get(imageUrl)
@@ -42,6 +36,7 @@ def getImages(imageUrl):
 	linkFile.write("<!doctype html />\n<html>\n<center>")
 	for imgs in soupImg.find_all("img"):
 		imgLink = imgs.get("src")
+		print()
 		print(imgLink)
 		linkFile.write("\n" + "<img src='" + str(imgLink) + "'/>")
 	linkFile.write("\n</center>")
@@ -49,4 +44,7 @@ def getImages(imageUrl):
 	linkFile.write("\n</html>")
 	linkFile.close()
 	os.rename("images.txt", "images.html")
+	print()
+	print("Done.")
 	os.system("pause")
+	print()
