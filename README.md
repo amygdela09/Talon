@@ -6,7 +6,7 @@ To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-
 
 Python Module Dependencies:
 
-1.)os
+1.)os \n
 2.)requests
 3.)wget
 4.)BeautifulSoup
