@@ -30,4 +30,4 @@ Talon.getLinks(URL) - Extracts all href links from HTML and generates a TXT file
 
 Talon.getSource(URL) - Downloads the HTML file from the url you chose. (source.html)
 
-Talon.getContent(URL) - Extracts all of the content in a webpage.  Content: '<h1>', '<h2>', '<span>', '<p>'. (content.txt)
+Talon.getContent(URL) - Extracts all of the content in a webpage.  Content: 'h1', 'h2', 'span', 'p'. (content.txt)
