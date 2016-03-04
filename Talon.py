@@ -15,7 +15,7 @@ def getLinks(linkUrl):
 	linkFile.close()
 	print()
 	print("Done.")
-	os.system("pause")
+	input("Press Enter.")
 	print()
 
 def getSource(sourceUrl):
@@ -26,7 +26,7 @@ def getSource(sourceUrl):
 	print()
 	print("Done.")
 	print("Saved as " + file)
-	os.system("pause")
+	input("Press Enter.")
 	print()
 
 def getImages(imageUrl):
@@ -46,5 +46,18 @@ def getImages(imageUrl):
 	os.rename("images.txt", "images.html")
 	print()
 	print("Done.")
-	os.system("pause")
+	input("Press Enter.")
+	print()
+
+def getContent(contentUrl):
+	conUrl = requests.get(contentUrl)
+	soupCon = BeautifulSoup(conUrl.content, "html.parser")
+	contentFile = open("content.txt", "a")
+	for stanzas in soupCon.find_all(["h1", "h2", "p", "span"]):
+		content = stanzas.get_text()
+		contentFile.write("\n" + content)
+	contentFile.close()
+	print()
+	print("Done.")
+	input("Press Enter.")
 	print()
